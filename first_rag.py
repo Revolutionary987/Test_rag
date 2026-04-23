@@ -23,6 +23,7 @@ def load_documents(docs_path):
             glob=glob_type,
             loader_cls=loader_type
         )
+        # loader.load resets everytime when new page is present so we use extend which unpacks this documents and then add it to the existing document
         documents.extend(loader.load())
     if len(documents)==0:
         raise FileNotFoundError("Documents are not present")
